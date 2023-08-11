@@ -9,10 +9,15 @@ import UIKit
 import Kingfisher
 
 class ViewController: UIViewController {
-
+    
+    let buttonHandler = FunctionHandlers()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupUIComponents()
+        // Disable dark mode
+        if #available(iOS 13.0, *) {
+            self.overrideUserInterfaceStyle = .light
+        }
         containerMode()
     }
     
@@ -31,22 +36,33 @@ class ViewController: UIViewController {
         let questionMarkImage = UIImage(systemName: "questionmark.circle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
         
         // Create the question mark icon buttons
-        let backButton = UIButton(type: .system)
-        backButton.setImage(questionMarkImage, for: .normal)
+        let infoButton = UIButton(type: .system)
+        infoButton.setImage(questionMarkImage, for: .normal)
+        // Add target and action for the button
+        infoButton.addTarget(buttonHandler, action: #selector(buttonHandler.infoButtonClicked), for: .touchUpInside)
     
-        let addButton = UIButton(type: .system)
-       //Load the image from URL using Kingfisher
-         if let imageURL = URL(string: "https://picsum.photos/50/50") {
-             addButton.kf.setImage(with: imageURL, for: .normal)
-             addButton.tintColor = .black  // Set button image color
-             appBar.addArrangedSubview(addButton)
-         } else {
-             addButton.setTitle("Add", for: .normal)
-         }
+        let addButton = UIImageView()
+          
+          // Load the image from URL using Kingfisher
+          if let imageURL = URL(string: "https://cdn.pixabay.com/photo/2023/07/20/11/00/muffin-8139065_1280.jpg") {
+              addButton.kf.setImage(with: imageURL)
+              addButton.tintColor = .black  // Set image color
+              addButton.isUserInteractionEnabled = true  // Enable user interaction
+              // Set rounded corners and dimensions
+              addButton.layer.cornerRadius = 15
+              addButton.layer.masksToBounds = true
+              addButton.translatesAutoresizingMaskIntoConstraints = false
+              addButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+              addButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+                //              let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addButtonTapped))
+                //              addButton.addGestureRecognizer(tapGesture)
+          } else {
+              addButton.image = UIImage(systemName: "person")  // Set default image
+          }
         
         
         // Add the items to the stack view
-        appBar.addArrangedSubview(backButton)
+        appBar.addArrangedSubview(infoButton)
         appBar.addArrangedSubview(addButton)
        
         stackView.addArrangedSubview(appBar)
@@ -63,87 +79,5 @@ class ViewController: UIViewController {
            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
        ])
     }
-
-    //ui component
-    private func setupUIComponents() {
-        view.backgroundColor = .white
-        // adding constraints to profileImageView
-       view.addSubview(profileImageView)
-       profileImageView.translatesAutoresizingMaskIntoConstraints = false
-       profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-       profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-       profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-       profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        
-        // adding constraints to email text field
-       view.addSubview(emailTextField)
-       emailTextField.translatesAutoresizingMaskIntoConstraints = false
-       emailTextField.leadingAnchor.constraint(equalTo:view.leadingAnchor, constant: 30).isActive = true
-       emailTextField.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant: -30).isActive = true
-       emailTextField.heightAnchor.constraint(equalToConstant:50).isActive = true
-       emailTextField.topAnchor.constraint(equalTo:profileImageView.bottomAnchor, constant: 60).isActive = true
-        
-        
-        // adding constraints to passwordTextField
-       view.addSubview(passwordTextField)
-       passwordTextField.translatesAutoresizingMaskIntoConstraints =   false
-       passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-       passwordTextField.trailingAnchor.constraint(equalTo:view.trailingAnchor, constant: -30).isActive = true
-       passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-       passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 30).isActive = true
-        
-        // adding constraints to register button
-       view.addSubview(registerButton)
-       registerButton.translatesAutoresizingMaskIntoConstraints = false
-       registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-       registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-       registerButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-       registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50).isActive = true
-     }
-    
-    private let registerButton: UIButton = {
-       let button = UIButton(type: .system)
-       button.backgroundColor = .darkGray
-       button.setTitle("Register", for: .normal)
-       button.setTitleColor(.white, for: .normal)
-       button.layer.cornerRadius = 8
-       button.layer.masksToBounds = true
-       return button
-    }()
-    
-    private let passwordTextField: UITextField = {
-       let textField = UITextField()
-       textField.layer.cornerRadius = 8
-       textField.layer.masksToBounds = true
-       textField.isSecureTextEntry = true
-       textField.layer.borderWidth = 1.0
-       textField.layer.borderColor = UIColor(white: 0, alpha:
-       0.3).cgColor
-       textField.placeholder = "Password"
-       textField.textAlignment = .center
-       return textField
-    }()
-    
-    private let emailTextField: UITextField = {
-       let textField = UITextField()
-       textField.keyboardType = .emailAddress
-       textField.layer.cornerRadius = 8
-       textField.layer.masksToBounds = true
-       textField.layer.borderWidth = 1.0
-       textField.layer.borderColor = UIColor(white: 0, alpha:0.3).cgColor
-       textField.placeholder = "Email Address"
-       textField.textAlignment = .center
-       return textField
-    }()
-    
-    // profile image view customization
-    private let profileImageView: UIImageView = {
-       let imageView = UIImageView()
-       imageView.contentMode = .scaleAspectFill
-       imageView.layer.cornerRadius = 16
-       imageView.layer.masksToBounds = true
-       imageView.backgroundColor = UIColor(white: 0, alpha: 0.1)
-       return imageView
-    }()
 }
 

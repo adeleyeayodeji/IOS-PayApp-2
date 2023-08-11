@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		521C1A18421C1C24691FE245 /* Pods_IOS_PayApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC127064DAF0289D87BC102A /* Pods_IOS_PayApp.framework */; };
+		D37426EE2A8585C200AE6F6E /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37426ED2A8585C200AE6F6E /* Functions.swift */; };
+		D37426F12A8588A100AE6F6E /* InfoBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37426F02A8588A100AE6F6E /* InfoBottomSheet.swift */; };
 		D3817AF62A8442DB008F75BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3817AF52A8442DB008F75BF /* AppDelegate.swift */; };
 		D3817AF82A8442DB008F75BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3817AF72A8442DB008F75BF /* SceneDelegate.swift */; };
 		D3817AFA2A8442DB008F75BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3817AF92A8442DB008F75BF /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		AD4FFE5AFA4BE4F0727CFA46 /* Pods-IOS PayApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS PayApp.release.xcconfig"; path = "Target Support Files/Pods-IOS PayApp/Pods-IOS PayApp.release.xcconfig"; sourceTree = "<group>"; };
 		BC127064DAF0289D87BC102A /* Pods_IOS_PayApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_PayApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D37426ED2A8585C200AE6F6E /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		D37426F02A8588A100AE6F6E /* InfoBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBottomSheet.swift; sourceTree = "<group>"; };
 		D3817AF22A8442DB008F75BF /* IOS PayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS PayApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3817AF52A8442DB008F75BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3817AF72A8442DB008F75BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D37426EF2A85888100AE6F6E /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				D37426F02A8588A100AE6F6E /* InfoBottomSheet.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
 		D3817AE92A8442DB008F75BF = {
 			isa = PBXGroup;
 			children = (
@@ -82,9 +94,11 @@
 		D3817AF42A8442DB008F75BF /* IOS PayApp */ = {
 			isa = PBXGroup;
 			children = (
+				D37426EF2A85888100AE6F6E /* BottomSheet */,
 				D3817AF52A8442DB008F75BF /* AppDelegate.swift */,
 				D3817AF72A8442DB008F75BF /* SceneDelegate.swift */,
 				D3817AF92A8442DB008F75BF /* ViewController.swift */,
+				D37426ED2A8585C200AE6F6E /* Functions.swift */,
 				D3817AFB2A8442DB008F75BF /* Main.storyboard */,
 				D3817B012A8442DC008F75BF /* Assets.xcassets */,
 				D3817B032A8442DC008F75BF /* LaunchScreen.storyboard */,
@@ -209,9 +223,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37426F12A8588A100AE6F6E /* InfoBottomSheet.swift in Sources */,
 				D3817B002A8442DB008F75BF /* IOS_PayApp.xcdatamodeld in Sources */,
 				D3817AFA2A8442DB008F75BF /* ViewController.swift in Sources */,
 				D3817AF62A8442DB008F75BF /* AppDelegate.swift in Sources */,
+				D37426EE2A8585C200AE6F6E /* Functions.swift in Sources */,
 				D3817AF82A8442DB008F75BF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
