@@ -12,12 +12,12 @@ class FunctionHandlers: NSObject {
     
     @objc func infoButtonClicked() {
         
-       let bottomSheetViewController = InfoBottomSheetViewController()
+       let bottomSheetViewController = InfoBottomSheetViewControllerPartial()
        bottomSheetViewController.modalPresentationStyle = .overCurrentContext
 
        if let presentingViewController = UIApplication.shared.keyWindow?.rootViewController {
            
-           bottomSheetViewController.modalPresentationStyle = .overCurrentContext
+          bottomSheetViewController.modalPresentationStyle = .overCurrentContext
            
           presentingViewController.present(bottomSheetViewController, animated: false, completion: nil)
        }

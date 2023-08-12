@@ -21,15 +21,6 @@ class InfoBottomSheetViewController: UIViewController {
     }
     
    private func containerMode(){
-       // Add a semi-transparent background view
-       let backgroundView = UIView()
-       backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-       backgroundView.frame = view.bounds
-       // Add a tap gesture recognizer to the view
-       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutside))
-       backgroundView.addGestureRecognizer(tapGesture)
-       view.addSubview(backgroundView)
-      
       view.backgroundColor = .clear
       
       let cardView = UIView()
