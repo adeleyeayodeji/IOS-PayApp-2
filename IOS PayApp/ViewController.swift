@@ -46,8 +46,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70)
         ])
     }
     
@@ -56,38 +55,41 @@ class ViewController: UIViewController {
         balanceView.axis = .horizontal
         balanceView.alignment = .top
         
+        
         //country select
-//        let countryCard = SelectCountryCardView.createAndAddToSuperview(balanceView)
-//        //add addArrangedSubview
-//        balanceView.addArrangedSubview(countryCard)
+        let countryCard = SelectCountryCardView.createAndAddToSuperview(balanceView)
+        //add addArrangedSubview
+        
+        balanceView.addArrangedSubview(countryCard)
         //balance view
         let balanceLabel = UIStackView()
         balanceLabel.axis = .vertical
-        balanceLabel.spacing = 7
+        balanceLabel.spacing = 5
+        
+        
+        balanceLabel.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 20)
+        balanceLabel.isLayoutMarginsRelativeArrangement = true
+
         //add text label
         let tlabel = UILabel()
         tlabel.text = "Your Balance"
         tlabel.font = UIFont.systemFont(ofSize: 13.1, weight: .light)
         tlabel.textColor = UIColor.gray // Set text color to grey
         
+        
         //add the currency
         let cur = UILabel()
-        cur.text = "NGN"
-
+        cur.text = "NGN 0.00"
+        cur.sizeToFit()
+        cur.layoutIfNeeded()
         cur.textColor = .black // Set text color if needed
-
-        // Add right margin constraint
-        cur.translatesAutoresizingMaskIntoConstraints = false
-        cur.setContentHuggingPriority(.required, for: .horizontal) // Ensure the label won't compress
-        //balance figure
-        let blc = UILabel()
-        blc.text = "0.00"
       
         // Load a custom bold font (make sure to replace "Custom-Bold-FontName" with the actual font name)
-        if let boldFont = UIFont(name: "Helvetica-Bold", size: 19) {
+        if let boldFont = UIFont(name: "Helvetica-Bold", size: 18) {
             cur.font = boldFont
-            blc.font = boldFont
         }
+        
+        
         //add hide icon
         let hideEye = UIImageView(
             image: UIImage(systemName: "eye")?.withTintColor(.black, renderingMode: .alwaysOriginal)
@@ -95,24 +97,19 @@ class ViewController: UIViewController {
         hideEye.contentMode = .scaleAspectFit
         hideEye.setContentHuggingPriority(.required, for: .horizontal)
         hideEye.setContentHuggingPriority(.required, for: .vertical)
-        hideEye.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        hideEye.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        hideEye.widthAnchor.constraint(equalToConstant: 17).isActive = true
+        hideEye.heightAnchor.constraint(equalToConstant: 17).isActive = true
         
         //cur stack
-        let curStack = UIStackView(arrangedSubviews: [cur, blc])
+        let curStack = UIStackView(arrangedSubviews: [cur, hideEye])
         curStack.axis = .horizontal
-        //add it to secondlabel
-        let secondlabelStack = UIStackView(arrangedSubviews: [curStack, hideEye])
-        secondlabelStack.axis = .horizontal
-        curStack.alignment = .fill
+        curStack.alignment = .center
+        curStack.spacing = 0 // Remove spacing
+        curStack.distribution = .fill
         
-        NSLayoutConstraint.activate([
-            // Add a right margin
-            cur.trailingAnchor.constraint(equalTo: secondlabelStack.trailingAnchor, constant: -307)
-        ])
         //add to balanceLabel
         balanceLabel.addArrangedSubview(tlabel)
-        balanceLabel.addArrangedSubview(secondlabelStack)
+        balanceLabel.addArrangedSubview(curStack)
         
         //add it to balance View
         balanceView.addArrangedSubview(balanceLabel)
