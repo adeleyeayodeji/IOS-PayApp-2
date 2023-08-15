@@ -36,8 +36,8 @@ class InfoBottomSheetViewController: UIViewController {
       titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
       titleLabel.textAlignment = .left
       
-      let helpCenterView = createListItem(title: "Help Center", icon: UIImage(systemName: "map"), description: "Some text with arrow forward to learn more")
-      let chatWithUsView = createListItem(title: "Chat with us", icon: UIImage(systemName: "message"), description: "Some text with arrow forward to learn more")
+      let helpCenterView = createListItem(title: "Help Center", icon: UIImage(systemName: "map")?.withTintColor(.black, renderingMode: .alwaysOriginal), description: "Some text with arrow forward to learn more")
+      let chatWithUsView = createListItem(title: "Chat with us", icon: UIImage(systemName: "message")?.withTintColor(.black, renderingMode: .alwaysOriginal), description: "Some text with arrow forward to learn more")
       
       cardView.addSubview(titleLabel)
       cardView.addSubview(helpCenterView)
@@ -93,7 +93,7 @@ class InfoBottomSheetViewController: UIViewController {
        descriptionLabel.font = UIFont.systemFont(ofSize: 12.5)
        descriptionLabel.numberOfLines = 0
        
-       let arrowImageView = UIImageView(image: UIImage(systemName: "arrow.forward.circle"))
+       let arrowImageView = UIImageView(image: UIImage(systemName: "arrow.forward.circle")?.withTintColor(.black, renderingMode: .alwaysOriginal))
        arrowImageView.contentMode = .scaleAspectFit
        
        let descIcon = UIStackView(arrangedSubviews: [descriptionLabel, arrowImageView])
