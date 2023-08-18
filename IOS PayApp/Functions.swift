@@ -22,4 +22,27 @@ class FunctionHandlers: NSObject {
           presentingViewController.present(bottomSheetViewController, animated: false, completion: nil)
        }
     }
+    
+    @objc func hideBalance(sender: UITapGestureRecognizer){
+        if let label = sender.view as? UILabel {
+            let string = label.text
+            if string!.contains("*") {
+                label.addCustom(
+                    image: (UIImage(systemName: "eye")?.withTintColor(.black, renderingMode: .alwaysOriginal))!,
+                    text: "NGN 0.00",
+                    isLeading: false
+                )
+                //update user default
+                UserDefaults.standard.setValue("no", forKey: "hidebalance")
+            }else{
+                label.addCustom(
+                    image: (UIImage(systemName: "eye.slash")?.withTintColor(.black, renderingMode: .alwaysOriginal))!,
+                    text: "NGN *****",
+                    isLeading: false
+                )
+                //update user default
+                UserDefaults.standard.setValue("yes", forKey: "hidebalance")
+            }
+        }
+    }
 }

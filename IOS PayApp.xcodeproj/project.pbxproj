@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		521C1A18421C1C24691FE245 /* Pods_IOS_PayApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC127064DAF0289D87BC102A /* Pods_IOS_PayApp.framework */; };
+		D33861CB2A8D77A50035B02D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33861CA2A8D77A50035B02D /* Extensions.swift */; };
+		D33861CF2A8D898A0035B02D /* CustomCardCiew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33861CE2A8D898A0035B02D /* CustomCardCiew.swift */; };
 		D37426EE2A8585C200AE6F6E /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37426ED2A8585C200AE6F6E /* Functions.swift */; };
 		D37426F12A8588A100AE6F6E /* InfoBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37426F02A8588A100AE6F6E /* InfoBottomSheet.swift */; };
 		D3817AF62A8442DB008F75BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3817AF52A8442DB008F75BF /* AppDelegate.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		AD4FFE5AFA4BE4F0727CFA46 /* Pods-IOS PayApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS PayApp.release.xcconfig"; path = "Target Support Files/Pods-IOS PayApp/Pods-IOS PayApp.release.xcconfig"; sourceTree = "<group>"; };
 		BC127064DAF0289D87BC102A /* Pods_IOS_PayApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_PayApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D33861CA2A8D77A50035B02D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D33861CE2A8D898A0035B02D /* CustomCardCiew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardCiew.swift; sourceTree = "<group>"; };
 		D37426ED2A8585C200AE6F6E /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		D37426F02A8588A100AE6F6E /* InfoBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBottomSheet.swift; sourceTree = "<group>"; };
 		D3817AF22A8442DB008F75BF /* IOS PayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS PayApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +75,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D33861C92A8D778B0035B02D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D33861CA2A8D77A50035B02D /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D37426EF2A85888100AE6F6E /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +113,7 @@
 		D3817AF42A8442DB008F75BF /* IOS PayApp */ = {
 			isa = PBXGroup;
 			children = (
+				D33861C92A8D778B0035B02D /* Extensions */,
 				D3878E382A876EBB00A704D1 /* Sections */,
 				D3878E322A873D1100A704D1 /* Pages */,
 				D37426EF2A85888100AE6F6E /* BottomSheet */,
@@ -137,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				D3878E392A876ECF00A704D1 /* SelectCountry.swift */,
+				D33861CE2A8D898A0035B02D /* CustomCardCiew.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -261,8 +275,10 @@
 				D3817AFA2A8442DB008F75BF /* ViewController.swift in Sources */,
 				D3817AF62A8442DB008F75BF /* AppDelegate.swift in Sources */,
 				D3878E342A873D2C00A704D1 /* UserProfile.swift in Sources */,
+				D33861CB2A8D77A50035B02D /* Extensions.swift in Sources */,
 				D37426EE2A8585C200AE6F6E /* Functions.swift in Sources */,
 				D3878E312A8735B000A704D1 /* Partial.swift in Sources */,
+				D33861CF2A8D898A0035B02D /* CustomCardCiew.swift in Sources */,
 				D3878E3A2A876ECF00A704D1 /* SelectCountry.swift in Sources */,
 				D3817AF82A8442DB008F75BF /* SceneDelegate.swift in Sources */,
 			);

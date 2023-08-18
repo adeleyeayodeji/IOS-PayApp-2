@@ -68,9 +68,16 @@ class ProfileViewController: UIViewController{
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(editAccountButton))
         editAccountText.addGestureRecognizer(tapGesture)
         
+        let title = UILabel()
+        title.text = "Profile"
+        title.textColor = .black
+        if let boldFont = UIFont(name: "Helvetica-Bold", size: 16) {
+            title.font = boldFont
+        }
         
         // Add the items to the stack view
         appBar.addArrangedSubview(closeButton)
+        appBar.addArrangedSubview(title)
         appBar.addArrangedSubview(editAccountText)
        
         stackView.addArrangedSubview(appBar)

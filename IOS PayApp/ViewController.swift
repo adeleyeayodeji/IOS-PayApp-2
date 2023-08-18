@@ -32,12 +32,53 @@ class ViewController: UIViewController {
         self.present(profileViewController, animated: true, completion: nil)
     }
     
+    private func add_cash(){
+        let cardView = CustomCardView.createAndAddToSuperview(title: " Add Cash", icon: UIImage(systemName: "plus"), addImage: true)
+        let cardView2 = CustomCardView.createAndAddToSuperview(title: " Add Cash", icon: UIImage(systemName: "arrow.2.squarepath"), addImage: true)
+        let cardView3 = CustomCardView.createAndAddToSuperview(title: "", icon: UIImage(systemName: "ellipsis")?.withTintColor(.black, renderingMode: .alwaysOriginal), addImage: true)
+        // Create a horizontal stack view for card view (if needed)
+        let addcashView = UIStackView(arrangedSubviews: [
+            cardView, cardView2
+        ])
+        
+        cardView.setContentHuggingPriority(. required, for: .horizontal)
+        cardView2.setContentHuggingPriority(. required, for: .horizontal)
+        cardView3.setContentHuggingPriority(. required, for: .horizontal)
+        
+        addcashView.axis = .horizontal
+        addcashView.alignment = .top
+        addcashView.spacing = 15
+        addcashView.distribution = .fillEqually
+        
+        addcashView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 15, right: 0) // Add a 20-point bottom margin
+        addcashView.isLayoutMarginsRelativeArrangement = true
+        
+        // Create an empty space view
+        let emptySpaceView = UIView()
+        emptySpaceView.translatesAutoresizingMaskIntoConstraints = false
+        emptySpaceView.widthAnchor.constraint(equalToConstant: 0).isActive = true // Adjust width as needed
+        
+        let newdd = UIStackView(arrangedSubviews: [cardView3, emptySpaceView])
+        newdd.axis = .horizontal
+        newdd.alignment = .center
+        newdd.spacing = 2
+        newdd.distribution = .fillEqually
+        
+        // Insert the empty space view into the stack view
+        addcashView.addArrangedSubview(newdd)
+        // Add the horizontal stack view (addcashView) to the main stack view (stackView)
+        stackView.addArrangedSubview(addcashView)
+    }
+    
     private func containerMode(){
         stackView.axis = .vertical // Use .horizontal for rows
        //pass header
         appHeader()
         //balanceSection
         balanceSection()
+        
+        //add cash section
+        add_cash()
         
         // Add constraints to position and size the stack view
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +105,7 @@ class ViewController: UIViewController {
         //balance view
         let balanceLabel = UIStackView()
         balanceLabel.axis = .vertical
-        balanceLabel.spacing = 5
+        balanceLabel.spacing = 7
         
         
         balanceLabel.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 20)
@@ -73,35 +114,36 @@ class ViewController: UIViewController {
         //add text label
         let tlabel = UILabel()
         tlabel.text = "Your Balance"
-        tlabel.font = UIFont.systemFont(ofSize: 13.1, weight: .light)
+        tlabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
         tlabel.textColor = UIColor.gray // Set text color to grey
         
         
         //add the currency
         let cur = UILabel()
-        cur.text = "NGN 0.00"
+        //get user default for hide balance
+        let hideBlc = UserDefaults.standard.string(forKey: "hidebalance")
+        cur.addCustom(
+            image: (UIImage(systemName: "eye")?.withTintColor(.black, renderingMode: .alwaysOriginal))!,
+            text: hideBlc == "no" ? "NGN 0.00" : "NGN *****",
+            isLeading: false
+        )
         cur.sizeToFit()
         cur.layoutIfNeeded()
         cur.textColor = .black // Set text color if needed
+        // Enable user interaction for the UIImageView
+        cur.isUserInteractionEnabled = true
+         
+         // Add tap gesture recognizer to the UIImageView
+        let curtapGesture = UITapGestureRecognizer(target: buttonHandler, action: #selector(buttonHandler.hideBalance))
+        cur.addGestureRecognizer(curtapGesture)
       
         // Load a custom bold font (make sure to replace "Custom-Bold-FontName" with the actual font name)
-        if let boldFont = UIFont(name: "Helvetica-Bold", size: 18) {
+        if let boldFont = UIFont(name: "Helvetica-Bold", size: 17.8) {
             cur.font = boldFont
         }
         
-        
-        //add hide icon
-        let hideEye = UIImageView(
-            image: UIImage(systemName: "eye")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        )
-        hideEye.contentMode = .scaleAspectFit
-        hideEye.setContentHuggingPriority(.required, for: .horizontal)
-        hideEye.setContentHuggingPriority(.required, for: .vertical)
-        hideEye.widthAnchor.constraint(equalToConstant: 17).isActive = true
-        hideEye.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        
         //cur stack
-        let curStack = UIStackView(arrangedSubviews: [cur, hideEye])
+        let curStack = UIStackView(arrangedSubviews: [cur])
         curStack.axis = .horizontal
         curStack.alignment = .center
         curStack.spacing = 0 // Remove spacing
@@ -167,4 +209,3 @@ class ViewController: UIViewController {
          stackView.addArrangedSubview(appBar)
     }
 }
-
