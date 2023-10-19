@@ -32,7 +32,7 @@ class InfoBottomSheetViewController: UIViewController {
       cardView.layer.shadowRadius = 0
       
       let titleLabel = UILabel()
-      titleLabel.text = "How can we help you 2?"
+      titleLabel.text = "How can we help you?"
       titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
       titleLabel.textAlignment = .left
       
